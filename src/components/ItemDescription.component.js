@@ -30,7 +30,7 @@ const ItemDesription = () => {
         </div>
         <button className='flex flex-row items-center gap-2 justify-center
          ml-0 mt-4 md:mt-0 md:ml-4 bg-orange-500 text-sm text-white px-12 py-4 rounded-md
-         w-full md:w-fit
+         w-full md:w-fit shadow-2xl shadow-orange-300
          '>
           <img src={iconCart} className='w-4 h-4'/>
           <span>Add to cart</span>

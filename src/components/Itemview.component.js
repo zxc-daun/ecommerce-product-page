@@ -23,19 +23,19 @@ const Iconwrapper = ({src, translate, isPreview}) => {
   )
 }
 
-const Imageslides = () => {
+const Imageslides = ({isPreview}) => {
   return (
     <div className='w-full flex justify-center items-center p-0 md:mb-12'>
-      <Iconwrapper src={previousIcon} translate='translate-x-12' />
+      <Iconwrapper src={previousIcon} translate='translate-x-12' isPreview={isPreview}/>
       <img src={imageProduct1} className='w-full md:max-w-[24em] md:rounded-lg max-h-96' alt='productimage'/>
-      <Iconwrapper src={ nextIcon} translate='-translate-x-12' />
+      <Iconwrapper src={ nextIcon} translate='-translate-x-12' isPreview={isPreview}/>
     </div>
   )
 }
 
 const ImageThunbnail = ({src}) => {
   return (
-    <div>
+    <div className='rounded-lg'>
       <img src={src} alt='thumbnail' className='rounded-lg cursor-pointer
        border-2 border-transparent
        hover:border-2 hover:border-orange-500 hover:opacity-60'
@@ -57,10 +57,10 @@ const Imagewrapper = () => {
   )
 }
 
-const Itemview = () => {
+const Itemview = ({isPreview}) => {
   return (
-    <div className='w-full md:w-1/2 md:p-12'>
-      <Imageslides />
+    <div className={`w-full md:p-12 ${isPreview ? 'md:w-full' : 'md:w-1/2'}`}>
+      <Imageslides isPreview={isPreview}/>
       <Imagewrapper />
     </div>
   )
