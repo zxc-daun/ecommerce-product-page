@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import minusIcon from '../images/icon-minus.svg'
 import plusIcon from '../images/icon-plus.svg'
 import iconCart from '../images/icon-cart.svg'
+import { AppContext } from '../App'
 
 const ItemDesription = () => {
+  const { fillCart, itemCount, increment, decrement } = useContext(AppContext)
+
   return (
     <div className='w-full md:w-1/2 p-4 sm:p-8 md:p-12 lg:py-24 lg:px-12 '>
       <h3 className='mb-4 font-bold tracking-wider text-orange-500 text-base'>SNEAKER COMPANY</h3>
@@ -24,14 +27,22 @@ const ItemDesription = () => {
         rounded-md w-full md:w-fit
         '
         >
-          <img src={minusIcon}  alt='minus icon' className='cursor-pointer'/>
-          <span className='mx-8'>0</span>
-          <img src={plusIcon}  alt='add icon' className='cursor-pointer'/>
+          <img src={minusIcon}  alt='minus icon' className='cursor-pointer' onClick={decrement}/>
+          <span className='mx-8'>
+            {
+              itemCount
+            }
+          </span>
+          <img src={plusIcon}  alt='add icon' className='cursor-pointer' onClick={ increment }/>
         </div>
         <button className='flex flex-row items-center gap-2 justify-center
          ml-0 mt-4 md:mt-0 md:ml-4 bg-orange-500 text-sm text-white px-12 py-4 rounded-md
          w-full md:w-fit shadow-2xl shadow-orange-300
-         '>
+         ' onClick={()=> {
+           if(itemCount > 0) {
+             fillCart()
+           }
+         }} >
           <img src={iconCart} className='w-4 h-4'/>
           <span>Add to cart</span>
         </button>

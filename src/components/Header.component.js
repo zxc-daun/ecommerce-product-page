@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import headerLogo from '../images/logo.svg'
 import cartIcon from '../images/icon-cart.svg'
 import avatarImage from '../images/image-avatar.png'
 import menuIcon from '../images/icon-menu.svg'
+
+import { AppContext } from '../App'
 
 import Cart from './Cart.component'
 
@@ -21,15 +23,19 @@ const Navbar = () => {
 }
  
 const Header = () => {
-  // const isCartOpen = true
-  const isCartOpen = false
+  const {isCartClicked, toggleCartClick, toggleSidebar} = useContext(AppContext)
+  const isCartOpen = isCartClicked
   return (
     <header className='relative flex flex-row items-center justify-center p-4 md:px-32 lg:px-48 md:py-6'>
-      <img src={menuIcon} className='w-4 h-4 cursor-pointer md:hidden' alt='menu item'/>
+      <img src={menuIcon} className='w-4 h-4 cursor-pointer md:hidden' alt='menu item'
+      onClick={toggleSidebar}
+      />
       <img src={headerLogo} className='w-32 h-4 md:h-6 md:w-36 ml-4 md:ml-0 cursor-pointer' alt='header logo'/>
       <Navbar />
       <div className='relative w-fit h-fit ml-auto mr-4 md:mr-6'>
-        <img src={cartIcon} className='w-4 h-4 md:w-6 md:h-6 cursor-pointer' alt='cart icon'/>
+        <img src={cartIcon} className='w-4 h-4 md:w-6 md:h-6 cursor-pointer' alt='cart icon'
+          onClick={toggleCartClick}
+        />
         <Cart className={`absolute hidden ${isCartOpen ? 'md:block' : 'md:hidden'} top-12 min-w-[21rem] transform translate-x-[-48%]`}/>
       </div>
       <Cart className={`absolute top-16 w-[95vw] ${isCartOpen ? 'block' : 'hidden'} md:hidden`}/>

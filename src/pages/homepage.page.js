@@ -1,16 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import Header from "../components/Header.component"
 import ItemDesription from "../components/ItemDescription.component"
 import Itemview from '../components/Itemview.component'
 import Sidebar from "../components/Sidebar.component"
 import ItemPreview from "../components/ItemOreview.component"
+import { AppContext } from "../App"
 
 const Homepage = () => {
-  const isMenuClicked = false
-  // const isMenuClicked = true
+  const { isHamburgerClicked, isPreviewClicked } = useContext(AppContext)
+  const isMenuClicked = isHamburgerClicked
 
-  // const isPreview = true
-  const isPreview = false
+  const isPreview = isPreviewClicked
   return (
     <div className="relative">
       <Header />
