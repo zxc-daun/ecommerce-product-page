@@ -24,7 +24,7 @@ export const useInitialState = () => {
   const [currentImageNum, updateCurrentImageNum] = useState(0)
   const updateImageNum = num => updateCurrentImageNum(num)
 
-  const [ isPreviewClicked, updateIsPreviewClicked ] = useState(true)
+  const [ isPreviewClicked, updateIsPreviewClicked ] = useState(false)
   const togglePreviewClick = () => updateIsPreviewClicked(!isPreviewClicked)
   
   return {
